@@ -2,9 +2,14 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { useLoginMutation } from '../../../../../services/authApi'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { loginSuccess } from '../../../../../redux/slices/authSlice'
 
 const LoginForm = () => {
   const [login] = useLoginMutation()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   return (
     <Formik
@@ -24,6 +29,8 @@ const LoginForm = () => {
           console.log(values)
           console.log(result)
           localStorage.setItem('token', result.token)
+          dispatch(loginSuccess(values))
+          navigate('/')
         } catch (error) {
           console.error('Ошибка авторизации', error)
         } finally {
