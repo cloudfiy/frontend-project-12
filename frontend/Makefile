@@ -5,5 +5,4 @@ start:
 	npm start
 
 build:
-	make install
 	npm build
