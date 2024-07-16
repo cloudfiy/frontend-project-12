@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useEffect } from 'react'
-import { setActiveChannel } from '../../../../redux/slices/channelsSlice'
+import { setActiveChannel } from '../../../../../redux/slices/channelsSlice'
 
 const useSocketListeners = (socket, refetchChannels) => {
   const dispatch = useDispatch()

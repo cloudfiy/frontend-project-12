@@ -1,102 +1,52 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik'
-import validationSchema from './validationSchema'
-import { useSignupMutation } from '../../../../redux/services/authApi'
+import { useState } from 'react'
+import { Formik, Form } from 'formik'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-
-import { setUser } from '../../../../redux/slices/userSlice'
-import { USER } from '../../../../shared/constants'
-import { ROUTES } from '../../../../app/routes/routes.data'
-import { useState } from 'react'
+import { useSignupMutation } from '../../../../redux/services/authApi'
+import validationSchema from './validation/validationSchema'
 import { useTranslation } from 'react-i18next'
+import { FormError, InputField } from './components'
+import handleSubmit from './utils/handleSubmit'
 
 const SignupForm = () => {
   const [signup] = useSignupMutation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [error, setError] = useState('')
-
   const { t } = useTranslation()
 
-  const handleSubmit = async ({ username, password }, { setSubmitting }) => {
-    setError('')
-    try {
-      const response = await signup({ username, password })
-      if (response.error) {
-        throw new Error('Conflict')
-      }
-      const data = response.data
-      if (data) {
-        const user = JSON.stringify(data)
-        localStorage.setItem(USER, user)
-        dispatch(setUser(data))
-        navigate(ROUTES.HOME)
-      }
-    } catch (error) {
-      if (error.message === 'Conflict') {
-        setError(t('userExist'))
-      } else {
-        setError(t('signUpError'))
-      }
-    } finally {
-      setSubmitting(false)
-    }
-  }
+  const initialValues = { username: '', password: '', confirmPassword: '' }
+
   return (
     <Formik
-      initialValues={{ username: '', password: '', confirmPassword: '' }}
+      initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={handleSubmit}
+      onSubmit={(values, actions) =>
+        handleSubmit(values, actions, signup, setError, dispatch, navigate, t)
+      }
     >
       {({ isSubmitting }) => (
         <Form className="w-50">
           <h1 className="text-center mb-4">Регистрация</h1>
-          {error && <div className="alert alert-danger">{error}</div>}
-          <div className="form-floating mb-3">
-            <Field
-              placeholder="От 3 до 20 символов"
-              name="username"
-              autoComplete="username"
-              required=""
-              id="username"
-              className="form-control"
-            />
-            <label className="form-label" htmlFor="username">
-              {t('username')}
-            </label>
-            <ErrorMessage name="username" component="div" className="text-danger" />
-          </div>
-          <div className="form-floating mb-3">
-            <Field
-              placeholder="Не менее 6 символов"
-              name="password"
-              aria-describedby="passwordHelpBlock"
-              required=""
-              autoComplete="new-password"
-              type="password"
-              id="password"
-              className="form-control"
-            />
-            <ErrorMessage name="password" component="div" className="text-danger" />
-            <label className="form-label" htmlFor="password">
-              {t('password')}
-            </label>
-          </div>
-          <div className="form-floating mb-4">
-            <Field
-              placeholder="Пароли должны совпадать"
-              name="confirmPassword"
-              required=""
-              autoComplete="new-password"
-              type="password"
-              id="confirmPassword"
-              className="form-control"
-            />
-            <ErrorMessage name="confirmPassword" component="div" className="text-danger" />
-            <label className="form-label" htmlFor="confirmPassword">
-              {t('confirmPassword')}
-            </label>
-          </div>
+          <FormError error={error} />
+          <InputField
+            name="username"
+            type="text"
+            placeholder="От 3 до 20 символов"
+            label="username"
+          />
+          <InputField
+            name="password"
+            type="password"
+            placeholder="Не менее 6 символов"
+            label="password"
+          />
+          <InputField
+            name="confirmPassword"
+            type="password"
+            placeholder="Пароли должны совпадать"
+            label="confirmPassword"
+          />
           <button type="submit" className="w-100 btn btn-outline-primary" disabled={isSubmitting}>
             {t('goSignUp')}
           </button>

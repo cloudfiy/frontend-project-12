@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import validationSchema from './validationSchema'
+import validationSchema from './validation/validationSchema'
 
 import { useNavigate } from 'react-router-dom'
 import { useLoginMutation } from '../../../../redux/services/authApi'
