@@ -1,0 +1,19 @@
+@import url('./reset.css');
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.react-toastify__toast {
+  min-height: 50px;
+}
+
+/* Пример CSS для установки другой позиции уведомлений */
+.react-toastify__toast-container {
+  top: 60px; /* или другое значение */
+}
