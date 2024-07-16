@@ -1,15 +1,19 @@
+import { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import validationSchema from './validation/validationSchema'
-
 import { useNavigate } from 'react-router-dom'
 import { useLoginMutation } from '../../../../redux/services/authApi'
 import { USER } from '../../../../shared/constants'
 import { useTranslation } from 'react-i18next'
+import useValidationSchemas from '../../../../shared/hooks/useValidationSchemas'
 
 const LoginForm = () => {
   const [login, { isLoading }] = useLoginMutation()
   const navigate = useNavigate()
   const { t } = useTranslation()
+  const [loginError, setLoginError] = useState('')
+
+  const validationSchemas = useValidationSchemas()
+  const validationSchema = validationSchemas.login
 
   const handleSubmit = async (value, { setSubmitting }) => {
     try {
@@ -17,6 +21,7 @@ const LoginForm = () => {
       localStorage.setItem(USER, JSON.stringify(result))
       navigate('/')
     } catch (error) {
+      setLoginError(t('validation.invalidUsernameOrPassword'))
       console.error(error)
     } finally {
       setSubmitting(false)
@@ -68,6 +73,7 @@ const LoginForm = () => {
               {t('password')}
             </label>
             <ErrorMessage name="password" component="div" className="text-danger" />
+            {loginError && <div className="text-danger">{loginError}</div>}
           </div>
           <button
             type="submit"

@@ -26,10 +26,14 @@ export default {
     addChannel: 'Добавить канал',
     channels: 'Каналы',
 
-    //Yup
-    required: 'Обязательное поле',
-    passwordLengthError: 'От 2 до 30 символов',
-    channelNameExistError: 'Канал с таким именем уже существует',
+    validation: {
+      required: 'Обязательное поле',
+      nameLengthError: 'От 3 до 30 символов',
+      passwordLengthError: 'Не менее 6 символов',
+      passwordNotConfirm: 'Пароли должны совпадать',
+      channelNameExistError: 'Канал с таким именем уже существует',
+      invalidUsernameOrPassword: 'Неверные имя пользователя или пароль',
+    },
 
     //Toast
     channelCreated: 'Канал создан',

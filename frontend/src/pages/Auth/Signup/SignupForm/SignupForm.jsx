@@ -3,10 +3,11 @@ import { Formik, Form } from 'formik'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useSignupMutation } from '../../../../redux/services/authApi'
-import validationSchema from './validation/validationSchema'
+
 import { useTranslation } from 'react-i18next'
 import { FormError, InputField } from './components'
 import handleSubmit from './utils/handleSubmit'
+import useValidationSchemas from '../../../../shared/hooks/useValidationSchemas'
 
 const SignupForm = () => {
   const [signup] = useSignupMutation()
@@ -16,6 +17,9 @@ const SignupForm = () => {
   const { t } = useTranslation()
 
   const initialValues = { username: '', password: '', confirmPassword: '' }
+
+  const validationSchemas = useValidationSchemas()
+  const validationSchema = validationSchemas.register
 
   return (
     <Formik
