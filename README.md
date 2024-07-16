@@ -4,7 +4,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/9ba641214ee6aa71d6ac/maintainability)](https://codeclimate.com/github/cloudfiy/frontend-project-12/maintainability)
 
-[![CI Status](https://github.com/cloudfiy/frontend-project-12/actions/workflows/ci.yaml/badge.svg)](https://github.com/cloudfiy/frontend-project-12/actions)
+<!-- [![CI Status](https://github.com/cloudfiy/frontend-project-12/actions/workflows/ci.yaml/badge.svg)](https://github.com/cloudfiy/frontend-project-12/actions) -->
 
 ### Chat
 

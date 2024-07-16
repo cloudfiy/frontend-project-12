@@ -6,5 +6,5 @@ start:
 	npm start
 
 build:
-	rm -rf frontend/dist
+	rd /s /q frontend\dist
 	npm run build --prefix frontend
