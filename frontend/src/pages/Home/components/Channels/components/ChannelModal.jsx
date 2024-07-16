@@ -3,9 +3,7 @@ import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik'
 import { useEffect, useMemo, useRef } from 'react'
 import * as Yup from 'yup'
 import { useTranslation } from 'react-i18next'
-
-import leoProfanity from 'leo-profanity'
-leoProfanity.loadDictionary('ru')
+import filterText from '../../../../../app/locales/profanityFilter'
 
 const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, channelsList }) => {
   const { t } = useTranslation()
@@ -24,16 +22,14 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
       : Yup.object({
           name: Yup.string()
             .required(t('required'))
-            .min(3, t('passwordLengthError'))
-            .max(20, t('passwordLengthError'))
-            .test('unique-name', t('channelNameExistError'), (value) => {
+            .test('unique-name', t('validation.channelNameExistError'), (value) => {
               const channelNames = channelsList.map((channel) => channel.name.toLowerCase())
               return !channelNames.includes(value.toLowerCase())
             }),
         })
 
   const handleSubmit = (values, { setSubmitting }) => {
-    const cleanName = leoProfanity.clean(values.name)
+    const cleanName = filterText(values.name)
     handleSave(modalType, cleanName, values.id)
     setSubmitting(false)
   }
@@ -89,7 +85,7 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
                 <p>{t('sureYouWantToDelete')}?</p>
               ) : (
                 <Form.Group controlId="formChannelName">
-                  <Form.Label hidden>Имя канала</Form.Label>
+                  <Form.Label hidden>{t('channelName')}</Form.Label>
                   <Field
                     name="name"
                     type="text"

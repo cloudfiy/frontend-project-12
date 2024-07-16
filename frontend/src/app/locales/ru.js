@@ -42,7 +42,6 @@ export default {
     channelRenameError: 'Ошибка переименования канала',
     channelRemoved: 'Канал удален',
     channelRemoveError: 'Ошибка удаления канала',
-
     messageSendError: 'Ошибка доставки сообщения',
   },
 }

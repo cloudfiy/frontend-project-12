@@ -1,12 +1,11 @@
-import leoProfanity from 'leo-profanity'
 import { toast } from 'react-toastify'
 
-leoProfanity.loadDictionary('ru')
+import filterText from '../../../../../app/locales/profanityFilter'
 
 const handleSendMessage = async (e, input, setInput, addMessage, activeChannel, username, t) => {
   e.preventDefault()
 
-  const cleanInput = leoProfanity.clean(input)
+  const cleanInput = filterText(input)
   const newMessage = { body: cleanInput, channelId: activeChannel.activeChannelId, username }
 
   try {
