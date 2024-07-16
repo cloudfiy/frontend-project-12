@@ -31,7 +31,7 @@ export default {
       nameLengthError: 'От 3 до 20 символов',
       passwordLengthError: 'Не менее 6 символов',
       passwordNotConfirm: 'Пароли должны совпадать',
-      channelNameExistError: 'Канал с таким именем уже существует',
+      channelNameExistError: 'Должно быть уникальным',
       invalidUsernameOrPassword: 'Неверные имя пользователя или пароль',
     },
 

@@ -85,7 +85,7 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
               {modalType === 'delete' ? (
                 <p>{t('sureYouWantToDelete')}?</p>
               ) : (
-                <Form.Group controlId="formChannelName">
+                <Form.Group controlId="name">
                   <Field
                     name="name"
                     type="text"
