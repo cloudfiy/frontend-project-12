@@ -69,7 +69,7 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
         <Modal.Title>
           {modalType === 'delete'
             ? t('removeChannel')
-            : modalType === 'edit'
+            : modalType === 'rename'
             ? t('renameChannel')
             : t('addChannel')}
         </Modal.Title>
