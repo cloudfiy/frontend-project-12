@@ -1,11 +1,10 @@
 import leoProfanity from 'leo-profanity'
 
-leoProfanity.loadDictionary('ru')
-const englishDictionary = leoProfanity.getDictionary('en')
-leoProfanity.add(englishDictionary)
+leoProfanity.loadDictionary('en')
 
-const filterText = (text) => {
-  return leoProfanity.clean(text)
-}
+const ruDictionary = leoProfanity.getDictionary('ru')
+leoProfanity.add(ruDictionary)
+
+const filterText = (text) => leoProfanity.clean(text)
 
 export default filterText
