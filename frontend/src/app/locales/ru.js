@@ -28,7 +28,7 @@ export default {
 
     validation: {
       required: 'Обязательное поле',
-      nameLengthError: 'От 3 до 30 символов',
+      nameLengthError: 'От 3 до 20 символов',
       passwordLengthError: 'Не менее 6 символов',
       passwordNotConfirm: 'Пароли должны совпадать',
       channelNameExistError: 'Канал с таким именем уже существует',
