@@ -7,13 +7,20 @@ import router from './routes/Router'
 import i18n from './i18n'
 import { I18nextProvider } from 'react-i18next'
 
-function App() {
+import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react'
+import { rollbarConfig } from './rollbarConfig'
+
+const App = () => {
   return (
-    <I18nextProvider i18n={i18n}>
-      <Provider store={store}>
-        <RouterProvider router={router}></RouterProvider>
-      </Provider>
-    </I18nextProvider>
+    <RollbarProvider config={rollbarConfig}>
+      <ErrorBoundary>
+        <I18nextProvider i18n={i18n}>
+          <Provider store={store}>
+            <RouterProvider router={router} />
+          </Provider>
+        </I18nextProvider>
+      </ErrorBoundary>
+    </RollbarProvider>
   )
 }
 

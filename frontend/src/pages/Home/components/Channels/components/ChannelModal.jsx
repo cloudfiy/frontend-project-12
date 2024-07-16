@@ -1,6 +1,6 @@
 import { Modal, Button, Form } from 'react-bootstrap'
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik'
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import * as Yup from 'yup'
 import { useTranslation } from 'react-i18next'
 
@@ -10,10 +10,13 @@ leoProfanity.loadDictionary('ru')
 const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, channelsList }) => {
   const { t } = useTranslation()
 
-  const initialValues = {
-    name: channelData ? channelData.name : '',
-    id: channelData ? channelData.id : null,
-  }
+  const initialValues = useMemo(
+    () => ({
+      name: channelData ? channelData.name : '',
+      id: channelData ? channelData.id : null,
+    }),
+    [channelData]
+  )
 
   const validationSchema =
     modalType === 'delete'

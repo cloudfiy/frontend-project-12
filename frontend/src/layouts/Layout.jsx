@@ -17,7 +17,7 @@ const Layout = () => {
           <div className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
             <div className="container">
               <Link to={ROUTES.HOME} className="navbar-brand">
-                Your chat
+                Hexlet Chat
               </Link>
               {isAuth && (
                 <button type="button" className="btn btn-primary" onClick={logout}>
