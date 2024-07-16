@@ -85,7 +85,8 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
               {modalType === 'delete' ? (
                 <p>{t('sureYouWantToDelete')}?</p>
               ) : (
-                <Form.Group controlId="name">
+                <Form.Group controlId="formChannelName">
+                  <Form.Label className="visually-hidden">Имя канала</Form.Label>
                   <Field
                     name="name"
                     type="text"
@@ -93,7 +94,6 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
                     className="form-control"
                     innerRef={inputRef}
                   />
-                  <Form.Label className="visually-hidden">Имя канала</Form.Label>
                   <ErrorMessage name="name" component="div" className="text-danger" />
                 </Form.Group>
               )}
