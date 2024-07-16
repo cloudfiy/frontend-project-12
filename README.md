@@ -4,4 +4,6 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/9ba641214ee6aa71d6ac/maintainability)](https://codeclimate.com/github/cloudfiy/frontend-project-12/maintainability)
 
-https://frontend-project-12-di5w.onrender.com
+[![CI Status](https://github.com/cloudfiy/frontend-project-12/actions/workflows/ci.yml/badge.svg)](https://github.com/cloudfiy/frontend-project-12/actions)
+
+### Chat
