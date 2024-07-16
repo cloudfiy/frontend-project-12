@@ -20,12 +20,10 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
     modalType === 'delete'
       ? null
       : Yup.object({
-          name: Yup.string()
-            .required(t('required'))
-            .test('unique-name', t('validation.channelNameExistError'), (value) => {
-              const channelNames = channelsList.map((channel) => channel.name.toLowerCase())
-              return !channelNames.includes(value.toLowerCase())
-            }),
+          name: Yup.string().test('unique-name', t('validation.channelNameExistError'), (value) => {
+            const channelNames = channelsList.map((channel) => channel.name.toLowerCase())
+            return !channelNames.includes(value.toLowerCase())
+          }),
         })
 
   const handleSubmit = (values, { setSubmitting }) => {
@@ -85,7 +83,7 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
                 <p>{t('sureYouWantToDelete')}?</p>
               ) : (
                 <Form.Group controlId="formChannelName">
-                  <Form.Label hidden>{t('channelName')}</Form.Label>
+                  <Form.Label hidden>Имя канала</Form.Label>
                   <Field
                     name="name"
                     type="text"
