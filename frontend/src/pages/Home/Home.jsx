@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { io } from 'socket.io-client';
 import { Channels, Chat } from './components';
 import { toast } from 'react-toastify';
@@ -7,22 +7,22 @@ const socket = io('/');
 
 const Home = () => {
   useEffect(() => {
-    // Обработчик успешного подключения
+    // Successful connection handler
     socket.on('connect', () => {
-      toast.success('Соединение установлено');
+      toast.success('Connection established');
     });
 
-    // Обработчик разрыва соединения
+    // Disconnection handler
     socket.on('disconnect', (reason) => {
-      toast.error(`Соединение разорвано: ${reason}`);
+      toast.error(`Connection lost: ${reason}`);
     });
 
-    // Обработчик попытки переподключения
+    // Reconnection attempt handler
     socket.on('reconnect_attempt', (attemptNumber) => {
-      toast.info(`Попытка переподключения №${attemptNumber}`);
+      toast.info(`Reconnection attempt #${attemptNumber}`);
     });
 
-    // Очистка обработчиков при размонтировании компонента
+    // Clean up handlers on component unmount
     return () => {
       socket.off('connect');
       socket.off('disconnect');

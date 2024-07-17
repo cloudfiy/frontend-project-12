@@ -24,7 +24,9 @@ const SignupForm = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values, actions) => handleSubmit(values, actions, signup, setError, dispatch, navigate, t)}
+      onSubmit={(values, actions) =>
+        handleSubmit(values, actions, signup, setError, dispatch, navigate, t)
+      }
     >
       {({ isSubmitting }) => (
         <Form className="w-50">

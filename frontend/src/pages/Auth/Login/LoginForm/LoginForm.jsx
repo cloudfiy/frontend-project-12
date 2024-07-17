@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; // Переместили импорт react-i18next в начало списка импортов
+import { useTranslation } from 'react-i18next';
 import { useLoginMutation } from '../../../../redux/services/authApi';
 import { USER } from '../../../../shared/constants';
 import useValidationSchemas from '../../../../shared/hooks/useValidationSchemas';
