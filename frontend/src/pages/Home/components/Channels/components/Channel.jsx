@@ -10,7 +10,7 @@ const Channel = ({ channel, activeChannelId, handleClickChannel, handleShowModal
         <Dropdown as="div" className="d-flex btn-group w-100">
           <button
             type="button"
-            className={cn('w-100 rounded-0 text-start btn', {
+            className={cn('w-100 rounded-0 text-start text-truncate btn', {
               'btn-secondary': channel.id === activeChannelId,
             })}
             onClick={() => handleClickChannel({ id: channel.id, name: channel.name })}
