@@ -1,6 +1,6 @@
 import { setUser } from '../../../../../redux/slices/userSlice';
 import { USER } from '../../../../../shared/constants';
-import { ROUTES } from '../../../../../app/routes/routes.data';
+import ROUTES from '../../../../../app/routes/routes.data';
 
 const handleSubmit = async (
   { username, password },

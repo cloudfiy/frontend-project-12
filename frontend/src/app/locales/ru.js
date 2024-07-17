@@ -35,7 +35,6 @@ export default {
       invalidUsernameOrPassword: 'Неверные имя пользователя или пароль',
     },
 
-    //Toast
     channelCreated: 'Канал создан',
     channelCreateError: 'Ошибка создания канала',
     channelRenamed: 'Канал переименован',

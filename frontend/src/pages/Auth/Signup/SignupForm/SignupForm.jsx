@@ -3,7 +3,6 @@ import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSignupMutation } from '../../../../redux/services/authApi';
-
 import { useTranslation } from 'react-i18next';
 import { FormError, InputField } from './components';
 import handleSubmit from './utils/handleSubmit';

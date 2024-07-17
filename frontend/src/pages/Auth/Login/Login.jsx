@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm/LoginForm';
-import { ROUTES } from '../../../app/routes/routes.data';
 import { useTranslation } from 'react-i18next';
 import LoginImg from '../../../shared/assets/images/cat.png';
+import  ROUTES  from '../../../app/routes/routes.data';
 
 const Login = () => {
   const { t } = useTranslation();
@@ -16,16 +16,18 @@ const Login = () => {
               <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
                 <img
                   src={LoginImg}
-                  alt="text"
+                  alt="Login"
                   className="rounded-circle"
-                  style={{ maxHeight: '200px' }}
-                ></img>
+                  style={{ maxHeight: '200px' }} 
+                />
               </div>
               <LoginForm />
             </div>
             <div className="card-footer p-4">
               <div className="text-center">
-                <span>{t('dontHaveAcc')}?</span> <Link to={ROUTES.SIGN_UP}>{t('signUp')}</Link>
+                <span>{t('dontHaveAcc')}</span>
+                {' '}
+                <Link to={ROUTES.SIGN_UP}>{t('signUp')}</Link>
               </div>
             </div>
           </div>

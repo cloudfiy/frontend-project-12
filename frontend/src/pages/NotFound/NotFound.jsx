@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../../app/routes/routes.data';
+import  ROUTES  from '../../app/routes/routes.data';
 import { useTranslation } from 'react-i18next';
 import NotFoundImg from '../../shared/assets/images/notfound.svg';
 

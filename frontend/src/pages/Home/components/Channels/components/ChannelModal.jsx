@@ -86,8 +86,8 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
               {modalType === 'delete' ? (
                 <p>{t('sureYouWantToDelete')}?</p>
               ) : (
-                <Form.Group controlId="formChannelName">
-                  <Form.Label className="visually-hidden" htmlFor="channelNameInput">
+                <Form.Group>
+                  <Form.Label htmlFor="channelNameInput" className="visually-hidden">
                     Имя канала
                   </Form.Label>
                   <Field

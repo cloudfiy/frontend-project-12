@@ -15,9 +15,9 @@ const LoginForm = () => {
   const validationSchemas = useValidationSchemas();
   const validationSchema = validationSchemas.login;
 
-  const handleSubmit = async (value, { setSubmitting }) => {
+  const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      const result = await login(value).unwrap();
+      const result = await login(values).unwrap();
       localStorage.setItem(USER, JSON.stringify(result));
       navigate('/');
     } catch (error) {
@@ -32,7 +32,7 @@ const LoginForm = () => {
     return (
       <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
         <div className="spinner-border" role="status">
-          <span className="visually-hidden">{t('loading')}...</span>
+          <span className="visually-hidden">{t('loading')}</span>...
         </div>
       </div>
     );
@@ -64,14 +64,12 @@ const LoginForm = () => {
               name="password"
               autoComplete="current-password"
               required
-              placeholder="password"
+              placeholder={t('password')}
               type="password"
               id="password"
               className="form-control"
             />
-            <label className="form-label" htmlFor="password">
-              {t('password')}
-            </label>
+            <label htmlFor="password">{t('password')}</label>
             <ErrorMessage name="password" component="div" className="text-danger" />
             {loginError && <div className="text-danger">{loginError}</div>}
           </div>
