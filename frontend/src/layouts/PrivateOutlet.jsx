@@ -5,7 +5,7 @@ import ROUTES from '../app/routes/routes.data';
 const PrivateOutlet = () => {
   const { isAuth } = useAuth();
   const location = useLocation();
-  
+
   if (isAuth) {
     return <Outlet />;
   }
