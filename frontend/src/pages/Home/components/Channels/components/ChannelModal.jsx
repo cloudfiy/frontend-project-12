@@ -21,6 +21,7 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
       ? null
       : Yup.object({
           name: Yup.string()
+            .required(t('validation.required'))
             .min(3, t('validation.nameLengthError'))
             .max(20, t('validation.nameLengthError'))
             .test('unique-name', t('validation.channelNameExistError'), (value) => {
@@ -90,9 +91,9 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
                   <Field
                     name="name"
                     type="text"
-                    placeholder={t('enterNameChannel')}
                     className="form-control"
                     innerRef={inputRef}
+                    aria-label="Имя канала"
                   />
                   <ErrorMessage name="name" component="div" className="text-danger" />
                 </Form.Group>
