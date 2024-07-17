@@ -1,6 +1,9 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: {
+    browser: true,
+    es2020: true,
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -8,25 +11,44 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
+  parserOptions: {
+    ecmaVersion: 2022,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
-    'import/extensions': 0,
-    'import/no-unresolved': 0,
-    'react/prop-types': 0,
-    'no-console': 0,
-    'react/react-in-jsx-scope': 0,
-    'functional/no-conditional-statements': 0,
-    'functional/no-expression-statements': 0,
-    'functional/immutable-data': 0,
-    'functional/functional-parameters': 0,
-    'functional/no-try-statements': 0,
-    'functional/no-throw-statements': 0,
-    'functional/no-return-void': 0,
-    'no-underscore-dangle': [2, { allow: ['__filename', '__dirname'] }],
-    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
-    'testing-library/no-debug': 0,
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
+    'react/prop-types': 'off',
+    'no-console': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'functional/no-conditional-statements': 'off',
+    'functional/no-expression-statements': 'off',
+    'functional/immutable-data': 'off',
+    'functional/functional-parameters': 'off',
+    'functional/no-try-statements': 'off',
+    'functional/no-throw-statements': 'off',
+    'functional/no-return-void': 'off',
+    'no-underscore-dangle': ['error', { allow: ['__filename', '__dirname'] }],
+    'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
+    'testing-library/no-debug': 'off',
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
+    'react/jsx-fragments': ['error', 'syntax'],
     semi: ['error', 'always'],
   },
+  overrides: [
+    {
+      files: ['*.jsx'],
+      rules: {
+        semi: ['error', 'always'],
+      },
+    },
+  ],
 }

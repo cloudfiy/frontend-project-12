@@ -1,14 +1,14 @@
-import { RouterProvider } from 'react-router-dom'
-import { Provider } from 'react-redux'
+import { RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import store from '../redux/store'
-import router from './routes/Router'
+import store from '../redux/store';
+import router from './routes/Router';
 
-import i18n from './i18n'
-import { I18nextProvider } from 'react-i18next'
+import i18n from './i18n';
+import { I18nextProvider } from 'react-i18next';
 
-import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react'
-import { rollbarConfig } from './rollbarConfig'
+import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
+import { rollbarConfig } from './rollbarConfig';
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
         </I18nextProvider>
       </ErrorBoundary>
     </RollbarProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

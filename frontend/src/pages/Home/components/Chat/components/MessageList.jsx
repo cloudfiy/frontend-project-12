@@ -6,6 +6,6 @@ const MessageList = ({ messages }) => (
       </div>
     ))}
   </div>
-)
+);
 
-export default MessageList
+export default MessageList;

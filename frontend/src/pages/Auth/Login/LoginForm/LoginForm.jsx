@@ -1,32 +1,32 @@
-import { useState } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { useNavigate } from 'react-router-dom'
-import { useLoginMutation } from '../../../../redux/services/authApi'
-import { USER } from '../../../../shared/constants'
-import { useTranslation } from 'react-i18next'
-import useValidationSchemas from '../../../../shared/hooks/useValidationSchemas'
+import { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { useLoginMutation } from '../../../../redux/services/authApi';
+import { USER } from '../../../../shared/constants';
+import { useTranslation } from 'react-i18next';
+import useValidationSchemas from '../../../../shared/hooks/useValidationSchemas';
 
 const LoginForm = () => {
-  const [login, { isLoading }] = useLoginMutation()
-  const navigate = useNavigate()
-  const { t } = useTranslation()
-  const [loginError, setLoginError] = useState('')
+  const [login, { isLoading }] = useLoginMutation();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const [loginError, setLoginError] = useState('');
 
-  const validationSchemas = useValidationSchemas()
-  const validationSchema = validationSchemas.login
+  const validationSchemas = useValidationSchemas();
+  const validationSchema = validationSchemas.login;
 
   const handleSubmit = async (value, { setSubmitting }) => {
     try {
-      const result = await login(value).unwrap()
-      localStorage.setItem(USER, JSON.stringify(result))
-      navigate('/')
+      const result = await login(value).unwrap();
+      localStorage.setItem(USER, JSON.stringify(result));
+      navigate('/');
     } catch (error) {
-      setLoginError(t('validation.invalidUsernameOrPassword'))
-      console.error(error)
+      setLoginError(t('validation.invalidUsernameOrPassword'));
+      console.error(error);
     } finally {
-      setSubmitting(false)
+      setSubmitting(false);
     }
-  }
+  };
 
   if (isLoading) {
     return (
@@ -35,7 +35,7 @@ const LoginForm = () => {
           <span className="visually-hidden">{t('loading')}...</span>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -85,7 +85,7 @@ const LoginForm = () => {
         </Form>
       )}
     </Formik>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

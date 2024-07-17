@@ -1,4 +1,4 @@
-import Channel from './Channel'
+import Channel from './Channel';
 
 const ChannelsList = ({ channelsList, activeChannelId, handleClickChannel, handleShowModal }) => {
   return (
@@ -16,7 +16,7 @@ const ChannelsList = ({ channelsList, activeChannelId, handleClickChannel, handl
         />
       ))}
     </ul>
-  )
-}
+  );
+};
 
-export default ChannelsList
+export default ChannelsList;

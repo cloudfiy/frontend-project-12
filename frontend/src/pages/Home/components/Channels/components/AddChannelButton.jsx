@@ -17,7 +17,7 @@ const AddChannelButton = ({ handleShowModal }) => {
       </svg>
       <span className="visually-hidden">+</span>
     </button>
-  )
-}
+  );
+};
 
-export default AddChannelButton
+export default AddChannelButton;

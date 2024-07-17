@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
-import { ROUTES } from '../../app/routes/routes.data'
-import { useTranslation } from 'react-i18next'
-import NotFoundImg from '../../shared/assets/images/notfound.svg'
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../app/routes/routes.data';
+import { useTranslation } from 'react-i18next';
+import NotFoundImg from '../../shared/assets/images/notfound.svg';
 
 const NotFound = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <div className="text-center">
@@ -15,6 +15,6 @@ const NotFound = () => {
         <Link to={ROUTES.HOME}>{t('pageNotFoundRedirect2')}</Link>
       </p>
     </div>
-  )
-}
-export default NotFound
+  );
+};
+export default NotFound;

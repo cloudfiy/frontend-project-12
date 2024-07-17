@@ -1,34 +1,34 @@
-import { useEffect } from 'react'
-import { Channels, Chat } from './components'
-import { io } from 'socket.io-client'
-import { toast } from 'react-toastify'
+import { useEffect } from 'react';
+import { Channels, Chat } from './components';
+import { io } from 'socket.io-client';
+import { toast } from 'react-toastify';
 
-const socket = io('/')
+const socket = io('/');
 
 const Home = () => {
   useEffect(() => {
     // Обработчик успешного подключения
     socket.on('connect', () => {
-      toast.success('Соединение установлено')
-    })
+      toast.success('Соединение установлено');
+    });
 
     // Обработчик разрыва соединения
     socket.on('disconnect', (reason) => {
-      toast.error('Соединение разорвано: ' + reason)
-    })
+      toast.error('Соединение разорвано: ' + reason);
+    });
 
     // Обработчик попытки переподключения
     socket.on('reconnect_attempt', (attemptNumber) => {
-      toast.info(`Попытка переподключения №${attemptNumber}`)
-    })
+      toast.info(`Попытка переподключения №${attemptNumber}`);
+    });
 
     // Очистка обработчиков при размонтировании компонента
     return () => {
-      socket.off('connect')
-      socket.off('disconnect')
-      socket.off('reconnect_attempt')
-    }
-  }, [])
+      socket.off('connect');
+      socket.off('disconnect');
+      socket.off('reconnect_attempt');
+    };
+  }, []);
 
   return (
     <>
@@ -39,6 +39,6 @@ const Home = () => {
         </div>
       </div>
     </>
-  )
-}
-export default Home
+  );
+};
+export default Home;

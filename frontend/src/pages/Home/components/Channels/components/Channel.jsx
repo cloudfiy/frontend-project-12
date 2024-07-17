@@ -1,9 +1,9 @@
-import Dropdown from 'react-bootstrap/Dropdown'
-import cn from 'clsx'
-import { useTranslation } from 'react-i18next'
+import Dropdown from 'react-bootstrap/Dropdown';
+import cn from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 const Channel = ({ channel, activeChannelId, handleClickChannel, handleShowModal }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <li className="nav-item w-100" key={channel.id}>
       {channel.removable ? (
@@ -50,7 +50,7 @@ const Channel = ({ channel, activeChannelId, handleClickChannel, handleShowModal
         </button>
       )}
     </li>
-  )
-}
+  );
+};
 
-export default Channel
+export default Channel;

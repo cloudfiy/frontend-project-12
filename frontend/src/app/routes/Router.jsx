@@ -1,9 +1,9 @@
-import { ROUTES } from './routes.data'
+import { ROUTES } from './routes.data';
 
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom';
 
-import { Home, Login, NotFound, Signup } from '../../pages'
-import { Layout, PrivateOutlet } from '../../layouts'
+import { Home, Login, NotFound, Signup } from '../../pages';
+import { Layout, PrivateOutlet } from '../../layouts';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +34,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-])
+]);
 
-export default router
+export default router;

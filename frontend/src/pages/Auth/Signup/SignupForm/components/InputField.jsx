@@ -1,8 +1,8 @@
-import { Field, ErrorMessage } from 'formik'
-import { useTranslation } from 'react-i18next'
+import { Field, ErrorMessage } from 'formik';
+import { useTranslation } from 'react-i18next';
 
 const InputField = ({ name, type, placeholder, label }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <div className="form-floating mb-3">
       <Field
@@ -19,7 +19,7 @@ const InputField = ({ name, type, placeholder, label }) => {
       </label>
       <ErrorMessage name={name} component="div" className="text-danger" />
     </div>
-  )
-}
+  );
+};
 
-export default InputField
+export default InputField;

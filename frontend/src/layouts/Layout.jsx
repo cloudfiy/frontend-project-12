@@ -1,14 +1,14 @@
-import { Link, Outlet } from 'react-router-dom'
-import { useLogout } from '../shared/hooks/useLogout'
-import { useAuth } from '../shared/hooks/useAuth'
-import { ROUTES } from '../app/routes/routes.data'
-import { useTranslation } from 'react-i18next'
-import { ToastContainer } from 'react-toastify'
+import { Link, Outlet } from 'react-router-dom';
+import { useLogout } from '../shared/hooks/useLogout';
+import { useAuth } from '../shared/hooks/useAuth';
+import { ROUTES } from '../app/routes/routes.data';
+import { useTranslation } from 'react-i18next';
+import { ToastContainer } from 'react-toastify';
 
 const Layout = () => {
-  const { isAuth } = useAuth()
-  const logout = useLogout()
-  const { t } = useTranslation()
+  const { isAuth } = useAuth();
+  const logout = useLogout();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -31,7 +31,7 @@ const Layout = () => {
         <ToastContainer />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

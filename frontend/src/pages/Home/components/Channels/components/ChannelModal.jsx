@@ -1,12 +1,12 @@
-import { Modal, Button, Form } from 'react-bootstrap'
-import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik'
-import { useEffect, useMemo, useRef } from 'react'
-import * as Yup from 'yup'
-import { useTranslation } from 'react-i18next'
-import filterText from '../../../../../app/locales/profanityFilter'
+import { Modal, Button, Form } from 'react-bootstrap';
+import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
+import { useEffect, useMemo, useRef } from 'react';
+import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
+import filterText from '../../../../../app/locales/profanityFilter';
 
 const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, channelsList }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const initialValues = useMemo(
     () => ({
@@ -14,7 +14,7 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
       id: channelData ? channelData.id : null,
     }),
     [channelData]
-  )
+  );
 
   const validationSchema =
     modalType === 'delete'
@@ -25,39 +25,39 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
             .min(3, t('validation.nameLengthError'))
             .max(20, t('validation.nameLengthError'))
             .test('unique-name', t('validation.channelNameExistError'), (value) => {
-              const channelNames = channelsList.map((channel) => channel.name.toLowerCase())
-              return !channelNames.includes(value.toLowerCase())
+              const channelNames = channelsList.map((channel) => channel.name.toLowerCase());
+              return !channelNames.includes(value.toLowerCase());
             }),
-        })
+        });
 
   const handleSubmit = (values, { setSubmitting }) => {
-    const cleanName = filterText(values.name)
-    handleSave(modalType, cleanName, values.id)
-    setSubmitting(false)
-  }
+    const cleanName = filterText(values.name);
+    handleSave(modalType, cleanName, values.id);
+    setSubmitting(false);
+  };
 
-  const inputRef = useRef(null)
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (show && inputRef.current && modalType !== 'delete') {
-      inputRef.current.focus()
+      inputRef.current.focus();
     }
-  }, [show, modalType])
+  }, [show, modalType]);
 
   useEffect(() => {
     if (modalType === 'delete' && show) {
       const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-          event.preventDefault()
-          handleSave(modalType, initialValues.name, initialValues.id)
+          event.preventDefault();
+          handleSave(modalType, initialValues.name, initialValues.id);
         }
-      }
-      document.addEventListener('keydown', handleKeyDown)
+      };
+      document.addEventListener('keydown', handleKeyDown);
       return () => {
-        document.removeEventListener('keydown', handleKeyDown)
-      }
+        document.removeEventListener('keydown', handleKeyDown);
+      };
     }
-  }, [show, modalType, initialValues, handleSave])
+  }, [show, modalType, initialValues, handleSave]);
 
   return (
     <Modal
@@ -114,7 +114,7 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
         </Formik>
       </Modal.Body>
     </Modal>
-  )
-}
+  );
+};
 
-export default ChannelModal
+export default ChannelModal;

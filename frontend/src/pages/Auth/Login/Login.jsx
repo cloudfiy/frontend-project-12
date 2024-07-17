@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
-import LoginForm from './LoginForm/LoginForm'
-import { ROUTES } from '../../../app/routes/routes.data'
-import { useTranslation } from 'react-i18next'
-import LoginImg from '../../../shared/assets/images/cat.png'
+import { Link } from 'react-router-dom';
+import LoginForm from './LoginForm/LoginForm';
+import { ROUTES } from '../../../app/routes/routes.data';
+import { useTranslation } from 'react-i18next';
+import LoginImg from '../../../shared/assets/images/cat.png';
 
 const Login = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <div className="container-fluid h-100">
@@ -32,7 +32,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

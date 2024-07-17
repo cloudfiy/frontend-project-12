@@ -33,6 +33,6 @@ const MessageInput = ({ input, setInput, handleSendMessage }) => (
       </div>
     </form>
   </div>
-)
+);
 
-export default MessageInput
+export default MessageInput;

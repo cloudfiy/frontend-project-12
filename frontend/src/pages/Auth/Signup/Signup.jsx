@@ -1,5 +1,5 @@
-import SignupForm from './SignupForm/SignupForm'
-import SignupImg from '../../../shared/assets/images/signup.png'
+import SignupForm from './SignupForm/SignupForm';
+import SignupImg from '../../../shared/assets/images/signup.png';
 
 const Signup = () => {
   return (
@@ -24,6 +24,6 @@ const Signup = () => {
         </div>
       </div>
     </>
-  )
-}
-export default Signup
+  );
+};
+export default Signup;
