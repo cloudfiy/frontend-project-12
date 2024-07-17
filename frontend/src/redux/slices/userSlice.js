@@ -11,12 +11,10 @@ const userSlice = createSlice({
   reducers: {
     setUser: (state, { payload }) => {
       const { username, token } = payload;
-      state.username = username;
-      state.token = token;
+      return { ...state, username, token };
     },
     logout: (state) => {
-      state.username = null;
-      state.token = null;
+      return { ...state, username: null, token: null };
     },
   },
 });

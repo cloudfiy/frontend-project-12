@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Channels, Chat } from './components';
-import { io } from 'socket.io-client';
 import { toast } from 'react-toastify';
+import { io } from 'socket.io-client';
 
 const socket = io('/');
 
@@ -14,7 +14,7 @@ const Home = () => {
 
     // Обработчик разрыва соединения
     socket.on('disconnect', (reason) => {
-      toast.error('Соединение разорвано: ' + reason);
+      toast.error(`Соединение разорвано: ${reason}`);
     });
 
     // Обработчик попытки переподключения
@@ -31,14 +31,13 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <div className="container h-100 my-4 overflow-hidden rounded shadow">
-        <div className="row h-100 bg-white flex-md-row">
-          <Channels />
-          <Chat />
-        </div>
+    <div className="container h-100 my-4 overflow-hidden rounded shadow">
+      <div className="row h-100 bg-white flex-md-row">
+        <Channels />
+        <Chat />
       </div>
-    </>
+    </div>
   );
 };
+
 export default Home;

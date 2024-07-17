@@ -1,9 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slices/userSlice';
-import { useNavigate } from 'react-router-dom';
 import { USER } from '../constants';
 
-export function useLogout() {
+const useLogout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,4 +14,6 @@ export function useLogout() {
   };
 
   return logout;
-}
+};
+
+export default useLogout;

@@ -13,7 +13,7 @@ const saveChannel = async (
   removeChannelMutation,
   messages,
   removeMessageMutation,
-  t
+  t,
 ) => {
   try {
     switch (type) {

@@ -44,7 +44,7 @@ const useChannelModal = () => {
       removeChannel,
       messages,
       removeMessage,
-      t
+      t,
     );
   };
 

@@ -71,7 +71,11 @@ const LoginForm = () => {
             />
             <label htmlFor="password">{t('password')}</label>
             <ErrorMessage name="password" component="div" className="text-danger" />
-            {loginError && <div className="text-danger">{loginError}</div>}
+            {loginError && (
+              <div className="text-danger">
+                {loginError}
+              </div>
+            )}
           </div>
           <button
             type="submit"

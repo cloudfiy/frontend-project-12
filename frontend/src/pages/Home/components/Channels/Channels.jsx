@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
+import io from 'socket.io-client'; // Перемещено вверх
 import { useGetChannelsQuery } from '../../../../redux/services/channelsApi';
 import { setActiveChannel } from '../../../../redux/slices/channelsSlice';
-import io from 'socket.io-client';
 import { useChannelModal, useSocketListeners } from './hooks';
 import { ChannelModal, AddChannelButton, ChannelsList } from './components';
 import { useTranslation } from 'react-i18next';
 
-const socket = io('/');
+const socket = io('/'); // Перемещено вверх
 
 const Channels = () => {
   const dispatch = useDispatch();
