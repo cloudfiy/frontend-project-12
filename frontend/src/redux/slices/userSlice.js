@@ -13,9 +13,7 @@ const userSlice = createSlice({
       const { username, token } = payload;
       return { ...state, username, token };
     },
-    logout: (state) => {
-      return { ...state, username: null, token: null };
-    },
+    logout: (state) => ({ ...state, username: null, token: null }),
   },
 });
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { USER } from '../constants';
 
-export function useAuth() {
+const useAuth = () => {
   const storedToken = localStorage.getItem(USER);
   const [token, setToken] = useState(storedToken ? JSON.parse(storedToken) : null);
   const [isAuth, setIsAuth] = useState(!!token);
@@ -20,4 +20,6 @@ export function useAuth() {
     isAuth,
     token,
   };
-}
+};
+
+export default useAuth;

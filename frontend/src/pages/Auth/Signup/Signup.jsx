@@ -1,4 +1,4 @@
-import { SignupForm } from './SignupForm';
+import SignupForm from './SignupForm';
 import SignupImg from '../../../shared/assets/images/signup.png';
 
 const Signup = () => (

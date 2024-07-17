@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { useAuth } from '../shared/hooks/useAuth';
+import useAuth from '../shared/hooks/useAuth';
 import ROUTES from '../app/routes/routes.data';
 
 const PrivateOutlet = () => {

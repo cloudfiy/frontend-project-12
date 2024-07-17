@@ -9,7 +9,7 @@ const handleSubmit = async (
   setError,
   dispatch,
   navigate,
-  t
+  t,
 ) => {
   setError('');
   try {
@@ -17,7 +17,7 @@ const handleSubmit = async (
     if (response.error) {
       throw new Error('Conflict');
     }
-    const data = response.data;
+    const { data } = response;
     if (data) {
       const user = JSON.stringify(data);
       localStorage.setItem(USER, user);

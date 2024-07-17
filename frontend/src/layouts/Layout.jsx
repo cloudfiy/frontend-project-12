@@ -1,8 +1,8 @@
 import { Link, Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
-import useLogout from '../shared/hooks/useLogout'; // Изменен импорт на default export
-import { useAuth } from '../shared/hooks/useAuth';
+import useLogout from '../shared/hooks/useLogout'; 
+import useAuth from '../shared/hooks/useAuth';
 import ROUTES from '../app/routes/routes.data';
 
 const Layout = () => {

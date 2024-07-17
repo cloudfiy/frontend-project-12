@@ -10,14 +10,21 @@ const channelsSlice = createSlice({
   name: 'channels',
   initialState,
   reducers: {
-    setActiveChannel: (state, { payload }) => {
-      return { ...state, activeChannelId: payload.id, activeChannelName: payload.name };
-    },
+    setActiveChannel: (state, { payload }) => ({
+      ...state,
+      activeChannelId: payload.id,
+      activeChannelName: payload.name,
+    }),
   },
   extraReducers: (builder) => {
-    builder.addMatcher(channelsApi.endpoints.addChannel.matchFulfilled, (state, { payload }) => {
-      return { ...state, activeChannelId: payload.id, activeChannelName: payload.name };
-    });
+    builder.addMatcher(
+      channelsApi.endpoints.addChannel.matchFulfilled,
+      (state, { payload }) => ({
+        ...state,
+        activeChannelId: payload.id,
+        activeChannelName: payload.name,
+      }),
+    );
   },
 });
 
