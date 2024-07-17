@@ -1,5 +1,5 @@
 const closeModal = (setModalShow) => {
-  setModalShow(false)
-}
+  setModalShow(false);
+};
 
-export default closeModal
+export default closeModal;

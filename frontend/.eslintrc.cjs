@@ -27,5 +27,6 @@ module.exports = {
     'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
     'testing-library/no-debug': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    semi: ['error', 'always'],
   },
 }

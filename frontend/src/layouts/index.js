@@ -1,4 +1,4 @@
-import Layout from './Layout'
-import PrivateOutlet from './PrivateOutlet'
+import Layout from './Layout';
+import PrivateOutlet from './PrivateOutlet';
 
-export { Layout, PrivateOutlet }
+export { Layout, PrivateOutlet };

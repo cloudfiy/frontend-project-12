@@ -1,4 +1,4 @@
-import $api from '../api'
+import $api from '../api';
 
 export const authApi = $api.injectEndpoints({
   endpoints: (builder) => ({
@@ -17,6 +17,6 @@ export const authApi = $api.injectEndpoints({
       }),
     }),
   }),
-})
+});
 
-export const { useLoginMutation, useSignupMutation } = authApi
+export const { useLoginMutation, useSignupMutation } = authApi;

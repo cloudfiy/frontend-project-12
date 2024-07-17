@@ -1,4 +1,4 @@
-import channelsSlice from './channelsSlice'
-import userSlice from './userSlice'
+import channelsSlice from './channelsSlice';
+import userSlice from './userSlice';
 
-export { channelsSlice, userSlice }
+export { channelsSlice, userSlice };

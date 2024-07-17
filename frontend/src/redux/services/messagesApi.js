@@ -1,4 +1,4 @@
-import $api from '../api'
+import $api from '../api';
 
 export const messagesApi = $api.injectEndpoints({
   endpoints: (builder) => ({
@@ -27,11 +27,11 @@ export const messagesApi = $api.injectEndpoints({
       }),
     }),
   }),
-})
+});
 
 export const {
   useGetMessagesQuery,
   useAddMessageMutation,
   useEditMessageMutation,
   useRemoveMessageMutation,
-} = messagesApi
+} = messagesApi;

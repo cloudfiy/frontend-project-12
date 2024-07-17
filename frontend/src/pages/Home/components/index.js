@@ -1,4 +1,4 @@
-import Channels from './Channels'
-import Chat from './Chat'
+import Channels from './Channels';
+import Chat from './Chat';
 
-export { Channels, Chat }
+export { Channels, Chat };

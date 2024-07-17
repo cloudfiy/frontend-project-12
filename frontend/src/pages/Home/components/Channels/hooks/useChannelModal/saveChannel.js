@@ -1,7 +1,7 @@
-import addChannel from './addChannel'
-import renameChannel from './renameChannel'
-import removeChannel from './removeChannel'
-import closeModal from './closeModal'
+import addChannel from './addChannel';
+import renameChannel from './renameChannel';
+import removeChannel from './removeChannel';
+import closeModal from './closeModal';
 
 const saveChannel = async (
   type,
@@ -18,22 +18,22 @@ const saveChannel = async (
   try {
     switch (type) {
       case 'add':
-        await addChannel(nameChannel, addChannelMutation, t)
-        break
+        await addChannel(nameChannel, addChannelMutation, t);
+        break;
       case 'rename':
-        await renameChannel(nameChannel, id, renameChannelMutation, t)
-        break
+        await renameChannel(nameChannel, id, renameChannelMutation, t);
+        break;
       case 'delete':
-        await removeChannel(id, removeChannelMutation, messages, removeMessageMutation, t)
-        break
+        await removeChannel(id, removeChannelMutation, messages, removeMessageMutation, t);
+        break;
       default:
-        console.log('Unknown type')
+        console.log('Unknown type');
     }
   } catch (error) {
-    console.error('Ошибка при сохранении изменений', error)
+    console.error('Ошибка при сохранении изменений', error);
   } finally {
-    closeModal(setModalShow)
+    closeModal(setModalShow);
   }
-}
+};
 
-export default saveChannel
+export default saveChannel;

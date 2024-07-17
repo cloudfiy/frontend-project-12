@@ -1,4 +1,4 @@
-import $api from '../api'
+import $api from '../api';
 
 export const channelsApi = $api.injectEndpoints({
   endpoints: (builder) => ({
@@ -27,11 +27,11 @@ export const channelsApi = $api.injectEndpoints({
       }),
     }),
   }),
-})
+});
 
 export const {
   useGetChannelsQuery,
   useAddChannelMutation,
   useRenameChannelMutation,
   useRemoveChannelMutation,
-} = channelsApi
+} = channelsApi;

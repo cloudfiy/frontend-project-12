@@ -1,8 +1,8 @@
-import { useTranslation } from 'react-i18next'
-import * as Yup from 'yup'
+import { useTranslation } from 'react-i18next';
+import * as Yup from 'yup';
 
 const useValidationSchemas = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const schemas = {
     register: Yup.object({
@@ -21,9 +21,9 @@ const useValidationSchemas = () => {
       username: Yup.string().required(t('validation.required')),
       password: Yup.string().required(t('validation.required')),
     }),
-  }
+  };
 
-  return schemas
-}
+  return schemas;
+};
 
-export default useValidationSchemas
+export default useValidationSchemas;

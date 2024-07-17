@@ -1,6 +1,6 @@
-import { setUser } from '../../../../../redux/slices/userSlice'
-import { USER } from '../../../../../shared/constants'
-import { ROUTES } from '../../../../../app/routes/routes.data'
+import { setUser } from '../../../../../redux/slices/userSlice';
+import { USER } from '../../../../../shared/constants';
+import { ROUTES } from '../../../../../app/routes/routes.data';
 
 const handleSubmit = async (
   { username, password },
@@ -11,28 +11,28 @@ const handleSubmit = async (
   navigate,
   t
 ) => {
-  setError('')
+  setError('');
   try {
-    const response = await signup({ username, password })
+    const response = await signup({ username, password });
     if (response.error) {
-      throw new Error('Conflict')
+      throw new Error('Conflict');
     }
-    const data = response.data
+    const data = response.data;
     if (data) {
-      const user = JSON.stringify(data)
-      localStorage.setItem(USER, user)
-      dispatch(setUser(data))
-      navigate(ROUTES.HOME)
+      const user = JSON.stringify(data);
+      localStorage.setItem(USER, user);
+      dispatch(setUser(data));
+      navigate(ROUTES.HOME);
     }
   } catch (error) {
     if (error.message === 'Conflict') {
-      setError(t('userExist'))
+      setError(t('userExist'));
     } else {
-      setError(t('signUpError'))
+      setError(t('signUpError'));
     }
   } finally {
-    setSubmitting(false)
+    setSubmitting(false);
   }
-}
+};
 
-export default handleSubmit
+export default handleSubmit;

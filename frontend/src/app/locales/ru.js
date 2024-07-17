@@ -44,4 +44,4 @@ export default {
     channelRemoveError: 'Ошибка удаления канала',
     messageSendError: 'Ошибка доставки сообщения',
   },
-}
+};
