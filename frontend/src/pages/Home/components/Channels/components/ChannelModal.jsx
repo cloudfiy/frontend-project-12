@@ -1,30 +1,37 @@
 import { Modal, Button, Form } from 'react-bootstrap';
-import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
+import {
+  Formik, Form as FormikForm, Field, ErrorMessage,
+} from 'formik';
 import { useEffect, useMemo, useRef } from 'react';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import filterText from '../../../../../app/locales/profanityFilter';
 
-const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, channelsList }) => {
+const ChannelModal = ({
+  show, handleClose, modalType, channelData, handleSave, channelsList,
+}) => {
   const { t } = useTranslation();
 
-  const initialValues = useMemo(() => ({
-    name: channelData ? channelData.name : '',
-    id: channelData ? channelData.id : null,
-  }), [channelData]);
+  const initialValues = useMemo(
+    () => ({
+      name: channelData ? channelData.name : '',
+      id: channelData ? channelData.id : null,
+    }),
+    [channelData],
+  );
 
   const validationSchema = modalType === 'delete'
     ? null
     : Yup.object({
-        name: Yup.string()
-          .required(t('validation.required'))
-          .min(3, t('validation.nameLengthError'))
-          .max(20, t('validation.nameLengthError'))
-          .test('unique-name', t('validation.channelNameExistError'), (value) => {
-            const channelNames = channelsList.map(channel => channel.name.toLowerCase());
-            return !channelNames.includes(value.toLowerCase());
-          }),
-      });
+      name: Yup.string()
+        .required(t('validation.required'))
+        .min(3, t('validation.nameLengthError'))
+        .max(20, t('validation.nameLengthError'))
+        .test('unique-name', t('validation.channelNameExistError'), (value) => {
+          const channelNames = channelsList.map((channel) => channel.name.toLowerCase());
+          return !channelNames.includes(value.toLowerCase());
+        }),
+    });
 
   const handleSubmit = (values, { setSubmitting }) => {
     const cleanName = filterText(values.name);
@@ -42,17 +49,20 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
 
   useEffect(() => {
     if (modalType === 'delete' && show) {
-      const handleKeyDown = event => {
+      const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
           event.preventDefault();
           handleSave(modalType, initialValues.name, initialValues.id);
         }
       };
       document.addEventListener('keydown', handleKeyDown);
+
       return () => {
         document.removeEventListener('keydown', handleKeyDown);
       };
     }
+
+    return undefined;
   }, [show, modalType, initialValues, handleSave]);
 
   return (
@@ -64,23 +74,29 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
     >
       <Modal.Header closeButton>
         <Modal.Title>
-          {modalType === 'delete'
-            ? t('removeChannel')
-            : modalType === 'rename'
-            ? t('renameChannel')
-            : t('addChannel')}
+          {(() => {
+            if (modalType === 'delete') {
+              return t('removeChannel');
+            } if (modalType === 'rename') {
+              return t('renameChannel');
+            }
+            return t('addChannel');
+          })()}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={handleSubmit}
+          onSubmit={(formikValues, { setSubmitting }) => handleSubmit(formikValues, setSubmitting)}
         >
-          {({ handleSubmit }) => (
-            <FormikForm onSubmit={handleSubmit}>
+          {({ handleSubmit: formikSubmit }) => (
+            <FormikForm onSubmit={formikSubmit}>
               {modalType === 'delete' ? (
-                <p>{t('sureYouWantToDelete')}?</p>
+                <p>
+                  {t('sureYouWantToDelete')}
+                  ?
+                </p>
               ) : (
                 <Form.Group>
                   <Form.Label htmlFor="channelNameInput" className="visually-hidden">

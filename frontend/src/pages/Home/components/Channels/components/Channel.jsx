@@ -2,7 +2,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import cn from 'clsx';
 import { useTranslation } from 'react-i18next';
 
-const Channel = ({ channel, activeChannelId, handleClickChannel, handleShowModal }) => {
+const Channel = ({
+  channel, activeChannelId, handleClickChannel, handleShowModal,
+}) => {
   const { t } = useTranslation();
 
   return (

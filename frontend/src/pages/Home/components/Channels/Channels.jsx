@@ -19,8 +19,9 @@ const Channels = () => {
     dispatch(setActiveChannel(name, id));
   };
 
-  const { modalShow, modalType, channelData, handleShowModal, handleClose, handleSave } =
-    useChannelModal();
+  const {
+    modalShow, modalType, channelData, handleShowModal, handleClose, handleSave,
+  } = useChannelModal();
 
   return (
     <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">

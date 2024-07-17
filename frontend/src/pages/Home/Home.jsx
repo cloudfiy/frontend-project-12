@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { io } from 'socket.io-client';
-import { Channels, Chat } from './components';
 import { toast } from 'react-toastify';
+import { Channels, Chat } from './components';
 
 const socket = io('/');
 

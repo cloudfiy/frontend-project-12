@@ -1,7 +1,9 @@
 import { Field, ErrorMessage } from 'formik';
 import { useTranslation } from 'react-i18next';
 
-const InputField = ({ name, type, placeholder, label }) => {
+const InputField = ({
+  name, type, placeholder, label,
+}) => {
   const { t } = useTranslation();
 
   return (

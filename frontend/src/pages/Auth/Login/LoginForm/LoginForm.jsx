@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLoginMutation } from '../../../../redux/services/authApi';
@@ -32,7 +34,8 @@ const LoginForm = () => {
     return (
       <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
         <div className="spinner-border" role="status">
-          <span className="visually-hidden">{t('loading')}</span>...
+          <span className="visually-hidden">{t('loading')}</span>
+          ...
         </div>
       </div>
     );

@@ -16,7 +16,7 @@ const Chat = () => {
 
   const activeChannel = useSelector((state) => state.channels);
   const activeChannelMessages = messages.filter(
-    (message) => message.channelId === activeChannel.activeChannelId
+    (message) => message.channelId === activeChannel.activeChannelId,
   );
 
   const [input, setInput] = useState('');
@@ -37,18 +37,30 @@ const Chat = () => {
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">
             <b>
-              # {activeChannel.activeChannelName}
+              #
+              {' '}
+              {activeChannel.activeChannelName}
             </b>
           </p>
           <span className="text-muted">
-            {activeChannelMessages.length ?? 0} сообщений
+            {activeChannelMessages.length ?? 0}
+            {' '}
+            сообщений
           </span>
         </div>
         <MessageList messages={activeChannelMessages} />
         <MessageInput
           input={input}
           setInput={setInput}
-          handleSendMessage={(e) => handleSendMessage(e, input, setInput, addMessage, activeChannel, username, t)}
+          handleSendMessage={(e) => handleSendMessage(
+            e,
+            input,
+            setInput,
+            addMessage,
+            activeChannel,
+            username,
+            t,
+          )}
         />
       </div>
     </div>
