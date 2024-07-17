@@ -40,7 +40,7 @@ export default {
     channelCreateError: 'Ошибка создания канала',
     channelRenamed: 'Канал переименован',
     channelRenameError: 'Ошибка переименования канала',
-    channelRemoved: 'Канал удален',
+    channelRemoved: 'Канал удалён',
     channelRemoveError: 'Ошибка удаления канала',
     messageSendError: 'Ошибка доставки сообщения',
   },
