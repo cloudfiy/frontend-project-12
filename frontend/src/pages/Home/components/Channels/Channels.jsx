@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import io from 'socket.io-client'; // Перемещено вверх
+import { useTranslation } from 'react-i18next';
+import io from 'socket.io-client';
 import { useGetChannelsQuery } from '../../../../redux/services/channelsApi';
 import { setActiveChannel } from '../../../../redux/slices/channelsSlice';
 import { useChannelModal, useSocketListeners } from './hooks';
 import { ChannelModal, AddChannelButton, ChannelsList } from './components';
-import { useTranslation } from 'react-i18next';
 
-const socket = io('/'); // Перемещено вверх
+const socket = io('/');
 
 const Channels = () => {
   const dispatch = useDispatch();
@@ -14,9 +14,11 @@ const Channels = () => {
   const { data: channelsList, refetch: refetchChannels } = useGetChannelsQuery();
   useSocketListeners(socket, refetchChannels);
   const activeChannelId = useSelector((state) => state.channels.activeChannelId);
+
   const handleClickChannel = (name, id) => {
     dispatch(setActiveChannel(name, id));
   };
+
   const { modalShow, modalType, channelData, handleShowModal, handleClose, handleSave } =
     useChannelModal();
 

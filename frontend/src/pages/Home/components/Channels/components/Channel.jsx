@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 const Channel = ({ channel, activeChannelId, handleClickChannel, handleShowModal }) => {
   const { t } = useTranslation();
+
   return (
     <li className="nav-item w-100" key={channel.id}>
       {channel.removable ? (
