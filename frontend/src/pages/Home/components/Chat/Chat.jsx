@@ -8,11 +8,12 @@ import { MessageInput, MessageList } from './components';
 import handleSendMessage from './utils/handleSendMessage';
 
 const Chat = () => {
+  const { t } = useTranslation();
+
   const { data: messages = [], refetch: refetchMessage } = useGetMessagesQuery();
   const [addMessage] = useAddMessageMutation();
   const { username } = JSON.parse(localStorage.getItem(USER));
 
-  const { t } = useTranslation();
   const activeChannel = useSelector((state) => state.channels);
   const activeChannelMessages = messages.filter(
     (message) => message.channelId === activeChannel.activeChannelId
@@ -37,7 +38,9 @@ const Chat = () => {
           <p className="m-0">
             <b># {activeChannel.activeChannelName}</b>
           </p>
-          <span className="text-muted">{activeChannelMessages.length ?? 0} сообщений</span>
+          <span className="text-muted">
+            {activeChannelMessages.length ?? 0} сообщений
+          </span>
         </div>
         <MessageList messages={activeChannelMessages} />
         <MessageInput

@@ -45,7 +45,7 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
-        <Form className="col-12 col-md-6 mt-3 mt-mb-0">
+        <Form className="col-12 col-md-6 mt-3 mt-md-0">
           <h1 className="text-center mb-4">{t('login')}</h1>
           <div className="form-floating mb-3">
             <Field

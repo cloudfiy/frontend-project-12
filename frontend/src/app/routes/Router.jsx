@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import  ROUTES  from './routes.data';
+import ROUTES from './routes.data';
 
 import { Home, Login, NotFound, Signup } from '../../pages';
 import { Layout, PrivateOutlet } from '../../layouts';

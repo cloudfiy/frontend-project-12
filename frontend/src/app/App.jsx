@@ -9,18 +9,16 @@ import router from './routes/Router';
 import i18n from './i18n';
 import rollbarConfig from './rollbarConfig';
 
-const App = () => {
-  return (
-    <RollbarProvider config={rollbarConfig}>
-      <ErrorBoundary>
-        <I18nextProvider i18n={i18n}>
-          <Provider store={store}>
-            <RouterProvider router={router} />
-          </Provider>
-        </I18nextProvider>
-      </ErrorBoundary>
-    </RollbarProvider>
-  );
-};
+const App = () => (
+  <RollbarProvider config={rollbarConfig}>
+    <ErrorBoundary>
+      <I18nextProvider i18n={i18n}>
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
+      </I18nextProvider>
+    </ErrorBoundary>
+  </RollbarProvider>
+);
 
 export default App;

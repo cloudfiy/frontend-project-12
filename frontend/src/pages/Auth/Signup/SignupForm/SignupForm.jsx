@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // Перенесено выше
 import { useSignupMutation } from '../../../../redux/services/authApi';
-import { useTranslation } from 'react-i18next';
 import { FormError, InputField } from './components';
 import handleSubmit from './utils/handleSubmit';
 import useValidationSchemas from '../../../../shared/hooks/useValidationSchemas';
@@ -13,7 +13,7 @@ const SignupForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState('');
-  const { t } = useTranslation();
+  const { t } = useTranslation(); // Перенесено сюда
 
   const initialValues = { username: '', password: '', confirmPassword: '' };
 

@@ -8,27 +8,23 @@ import filterText from '../../../../../app/locales/profanityFilter';
 const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, channelsList }) => {
   const { t } = useTranslation();
 
-  const initialValues = useMemo(
-    () => ({
-      name: channelData ? channelData.name : '',
-      id: channelData ? channelData.id : null,
-    }),
-    [channelData]
-  );
+  const initialValues = useMemo(() => ({
+    name: channelData ? channelData.name : '',
+    id: channelData ? channelData.id : null,
+  }), [channelData]);
 
-  const validationSchema =
-    modalType === 'delete'
-      ? null
-      : Yup.object({
-          name: Yup.string()
-            .required(t('validation.required'))
-            .min(3, t('validation.nameLengthError'))
-            .max(20, t('validation.nameLengthError'))
-            .test('unique-name', t('validation.channelNameExistError'), (value) => {
-              const channelNames = channelsList.map((channel) => channel.name.toLowerCase());
-              return !channelNames.includes(value.toLowerCase());
-            }),
-        });
+  const validationSchema = modalType === 'delete'
+    ? null
+    : Yup.object({
+      name: Yup.string()
+        .required(t('validation.required'))
+        .min(3, t('validation.nameLengthError'))
+        .max(20, t('validation.nameLengthError'))
+        .test('unique-name', t('validation.channelNameExistError'), (value) => {
+          const channelNames = channelsList.map(channel => channel.name.toLowerCase());
+          return !channelNames.includes(value.toLowerCase());
+        }),
+    });
 
   const handleSubmit = (values, { setSubmitting }) => {
     const cleanName = filterText(values.name);
@@ -71,8 +67,8 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
           {modalType === 'delete'
             ? t('removeChannel')
             : modalType === 'rename'
-            ? t('renameChannel')
-            : t('addChannel')}
+              ? t('renameChannel')
+              : t('addChannel')}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -83,24 +79,24 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
         >
           {({ handleSubmit }) => (
             <FormikForm onSubmit={handleSubmit}>
-              {modalType === 'delete' ? (
-                <p>{t('sureYouWantToDelete')}?</p>
-              ) : (
-                <Form.Group>
-                  <Form.Label htmlFor="channelNameInput" className="visually-hidden">
-                    Имя канала
-                  </Form.Label>
-                  <Field
-                    name="name"
-                    type="text"
-                    id="channelNameInput"
-                    className="form-control"
-                    innerRef={inputRef}
-                    placeholder="Имя канала"
-                  />
-                  <ErrorMessage name="name" component="div" className="text-danger" />
-                </Form.Group>
-              )}
+              {modalType === 'delete'
+                ? <p>{t('sureYouWantToDelete')}?</p>
+                : (
+                  <Form.Group>
+                    <Form.Label htmlFor="channelNameInput" className="visually-hidden">
+                      Имя канала
+                    </Form.Label>
+                    <Field
+                      name="name"
+                      type="text"
+                      id="channelNameInput"
+                      className="form-control"
+                      innerRef={inputRef}
+                      placeholder="Имя канала"
+                    />
+                    <ErrorMessage name="name" component="div" className="text-danger" />
+                  </Form.Group>
+                )}
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   {t('cancel')}
