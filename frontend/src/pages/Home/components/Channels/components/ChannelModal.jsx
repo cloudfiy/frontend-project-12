@@ -87,13 +87,16 @@ const ChannelModal = ({ show, handleClose, modalType, channelData, handleSave, c
                 <p>{t('sureYouWantToDelete')}?</p>
               ) : (
                 <Form.Group controlId="formChannelName">
-                  <Form.Label className="visually-hidden">Имя канала</Form.Label>
+                  <Form.Label className="visually-hidden" htmlFor="channelNameInput">
+                    Имя канала
+                  </Form.Label>
                   <Field
                     name="name"
                     type="text"
+                    id="channelNameInput"
                     className="form-control"
                     innerRef={inputRef}
-                    aria-label="Имя канала"
+                    placeholder="Имя канала"
                   />
                   <ErrorMessage name="name" component="div" className="text-danger" />
                 </Form.Group>
