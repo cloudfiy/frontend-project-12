@@ -18,7 +18,7 @@ const MessageList = ({ messages }) => {
       {messages.map((msg, index) => (
         <div className="text-break mb-2" key={msg.id}>
           <b>{msg.username}</b>
-          :
+          {': '}
           {msg.body}
           {index === messages.length - 1 && <div ref={messagesEndRef} />}
         </div>

@@ -56,7 +56,7 @@ const RenameChannelModal = ({ isShow }) => {
       {(inputRef) => (
         <Form.Group>
           <Form.Label htmlFor="channelNameInput" className="visually-hidden">
-            {t('channelName')}
+            Имя канала
           </Form.Label>
           <Field
             name="name"
