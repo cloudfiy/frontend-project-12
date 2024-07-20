@@ -1,12 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { API_URL } from '../../shared/constants';
+import authApiInstance from '../noAuthApi';
 
-const baseQuery = fetchBaseQuery({
-  baseUrl: API_URL,
-});
-
-export const authApi = createApi({
-  baseQuery,
+export const authApi = authApiInstance.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials) => ({
