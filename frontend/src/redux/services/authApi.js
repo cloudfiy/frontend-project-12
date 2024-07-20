@@ -1,6 +1,12 @@
-import $api from '../api';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_URL } from '../../shared/constants';
 
-export const authApi = $api.injectEndpoints({
+const baseQuery = fetchBaseQuery({
+  baseUrl: API_URL,
+});
+
+export const authApi = createApi({
+  baseQuery,
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials) => ({
