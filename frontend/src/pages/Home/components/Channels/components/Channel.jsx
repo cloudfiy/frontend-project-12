@@ -1,11 +1,12 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import cn from 'clsx';
 import { useTranslation } from 'react-i18next';
+import useModal from '../../../../../shared/hooks/useModal';
 
-const Channel = ({
-  channel, activeChannelId, handleClickChannel, handleShowModal,
-}) => {
+const Channel = ({ channel, activeChannelId, handleClickChannel }) => {
   const { t } = useTranslation();
+
+  const { handleOpenModal } = useModal();
 
   return (
     <li className="nav-item w-100" key={channel.id}>
@@ -30,11 +31,11 @@ const Channel = ({
             <span className="visually-hidden">Управление каналом</span>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => handleShowModal('delete', { id: channel.id })}>
+            <Dropdown.Item onClick={() => handleOpenModal('delete', { id: channel.id })}>
               {t('delete')}
             </Dropdown.Item>
             <Dropdown.Item
-              onClick={() => handleShowModal('rename', { name: channel.name, id: channel.id })}
+              onClick={() => handleOpenModal('rename', { name: channel.name, id: channel.id })}
             >
               {t('rename')}
             </Dropdown.Item>

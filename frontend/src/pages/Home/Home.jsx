@@ -1,40 +1,54 @@
-import React, { useEffect } from 'react';
-import { io } from 'socket.io-client';
-import { toast } from 'react-toastify';
+import { Spinner } from 'react-bootstrap';
 import { Channels, Chat } from './components';
+import { useGetMessagesQuery } from '../../redux/services/messagesApi';
+import { useGetChannelsQuery } from '../../redux/services/channelsApi';
 
-const socket = io('/');
+import getModal from '../../shared/components/Modals/index.js';
+
+import useSocket from './useSocket.js';
+import useModal from '../../shared/hooks/useModal.js';
 
 const Home = () => {
-  useEffect(() => {
-    // Successful connection handler
-    socket.on('connect', () => {
-      toast.success('Connection established');
-    });
+  useSocket();
 
-    // Disconnection handler
-    socket.on('disconnect', (reason) => {
-      toast.error(`Connection lost: ${reason}`);
-    });
+  const { isShow, modalType, modalProps } = useModal();
 
-    // Reconnection attempt handler
-    socket.on('reconnect_attempt', (attemptNumber) => {
-      toast.info(`Reconnection attempt #${attemptNumber}`);
-    });
+  const {
+    data: channelsList = [],
+    refetch: refetchChannels,
+    isLoading: channelsLoading,
+  } = useGetChannelsQuery();
+  const {
+    data: messages = [],
+    refetch: refetchMessage,
+    isLoading: messageLoading,
+  } = useGetMessagesQuery();
 
-    // Clean up handlers on component unmount
-    return () => {
-      socket.off('connect');
-      socket.off('disconnect');
-      socket.off('reconnect_attempt');
-    };
-  }, []);
+  const renderModal = () => {
+    if (!modalType) {
+      return null;
+    }
+
+    const ModalComponent = getModal(modalType);
+    return ModalComponent ? <ModalComponent isShow={isShow} modalProps={modalProps} /> : null;
+  };
+
+  if (channelsLoading || messageLoading) {
+    return (
+      <div className="h-100 col-12 d-flex align-items-center justify-content-center">
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
 
   return (
     <div className="container h-100 my-4 overflow-hidden rounded shadow">
       <div className="row h-100 bg-white flex-md-row">
-        <Channels />
-        <Chat />
+        <Channels channelsList={channelsList} refetchChannels={refetchChannels} />
+        <Chat messages={messages} refetchMessage={refetchMessage} />
+        {renderModal()}
       </div>
     </div>
   );

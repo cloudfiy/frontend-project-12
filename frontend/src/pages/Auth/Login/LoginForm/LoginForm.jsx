@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useLoginMutation } from '../../../../redux/services/authApi';
 import { USER } from '../../../../shared/constants';
 import useValidationSchemas from '../../../../shared/hooks/useValidationSchemas';
+import ROUTES from '../../../../app/routes/routes.data';
 
 const LoginForm = () => {
   const [login, { isLoading }] = useLoginMutation();
@@ -21,7 +22,7 @@ const LoginForm = () => {
     try {
       const result = await login(values).unwrap();
       localStorage.setItem(USER, JSON.stringify(result));
-      navigate('/');
+      navigate(ROUTES.HOME);
     } catch (error) {
       setLoginError(t('validation.invalidUsernameOrPassword'));
       console.error(error);

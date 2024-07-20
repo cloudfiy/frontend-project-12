@@ -1,6 +1,5 @@
 import { toast } from 'react-toastify';
-
-import filterText from '../../../../../app/locales/profanityFilter';
+import filterText from '../../../../../shared/profanityFilter';
 
 const handleSendMessage = async (e, input, setInput, addMessage, activeChannel, username, t) => {
   e.preventDefault();

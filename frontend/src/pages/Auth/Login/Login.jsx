@@ -16,7 +16,7 @@ const Login = () => {
               <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
                 <img
                   src={LoginImg}
-                  alt="Login"
+                  alt={t('login')}
                   className="rounded-circle"
                   style={{ maxHeight: '200px' }}
                 />

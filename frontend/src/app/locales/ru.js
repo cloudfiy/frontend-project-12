@@ -25,6 +25,10 @@ export default {
     renameChannel: 'Переименовать канал',
     addChannel: 'Добавить канал',
     channels: 'Каналы',
+    messageCount: '{{count}} сообщение',
+    messageCount_few: '{{count}} сообщения',
+    messageCount_many: '{{count}} сообщений',
+    messageCount_other: '{{count}} сообщений',
 
     validation: {
       required: 'Обязательное поле',
@@ -42,5 +46,8 @@ export default {
     channelRemoved: 'Канал удалён',
     channelRemoveError: 'Ошибка удаления канала',
     messageSendError: 'Ошибка доставки сообщения',
+    connectionEstablished: 'Соединение установлено',
+    connectionLost: 'Соединение потеряно',
+    reconnectionAtt: 'Попытка переподключения',
   },
 };

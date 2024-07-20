@@ -8,7 +8,7 @@ const NotFound = () => {
 
   return (
     <div className="text-center">
-      <img alt="Страница не найдена" src={NotFoundImg} style={{ maxHeight: '600px' }} />
+      <img alt={t('pageNotFound')} src={NotFoundImg} style={{ maxHeight: '600px' }} />
       <h1 className="h4 text-muted">{t('pageNotFound')}</h1>
       <p className="text-muted">
         {t('pageNotFoundRedirect1')}

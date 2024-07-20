@@ -36,11 +36,11 @@ const SignupForm = () => {
     >
       {({ isSubmitting }) => (
         <Form className="w-50">
-          <h1 className="text-center mb-4">Регистрация</h1>
+          <h1 className="text-center mb-4">{t('signUp')}</h1>
           <FormError error={error} />
-          <InputField name="username" type="text" placeholder="От 3 до 20 символов" label="username" />
-          <InputField name="password" type="password" placeholder="Не менее 6 символов" label="password" />
-          <InputField name="confirmPassword" type="password" placeholder="Пароли должны совпадать" label="confirmPassword" />
+          <InputField name="username" type="text" placeholder={t('validation.nameLengthError')} label="username" />
+          <InputField name="password" type="password" placeholder={t('validation.passwordLengthError')} label="password" />
+          <InputField name="confirmPassword" type="password" placeholder={t('validation.passwordNotConfirm')} label="confirmPassword" />
           <button type="submit" className="w-100 btn btn-outline-primary" disabled={isSubmitting}>
             {t('goSignUp')}
           </button>

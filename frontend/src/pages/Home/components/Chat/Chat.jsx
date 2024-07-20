@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useAddMessageMutation, useGetMessagesQuery } from '../../../../redux/services/messagesApi';
+import { useAddMessageMutation } from '../../../../redux/services/messagesApi';
 import { USER } from '../../../../shared/constants';
 import socket from './sockets/socket';
 import { MessageInput, MessageList } from './components';
 import handleSendMessage from './utils/handleSendMessage';
 
-const Chat = () => {
+const Chat = ({ messages, refetchMessage }) => {
   const { t } = useTranslation();
 
-  const { data: messages = [], refetch: refetchMessage } = useGetMessagesQuery();
   const [addMessage] = useAddMessageMutation();
   const { username } = JSON.parse(localStorage.getItem(USER));
 
@@ -43,9 +42,7 @@ const Chat = () => {
             </b>
           </p>
           <span className="text-muted">
-            {activeChannelMessages.length ?? 0}
-            {' '}
-            сообщений
+            {t('messageCount', { count: activeChannelMessages.length })}
           </span>
         </div>
         <MessageList messages={activeChannelMessages} />
