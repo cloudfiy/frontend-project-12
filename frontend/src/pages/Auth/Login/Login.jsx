@@ -25,7 +25,11 @@ const Login = () => {
             </div>
             <div className="card-footer p-4">
               <div className="text-center">
-                <span>{t('dontHaveAcc')}</span>
+                <span>
+                  {t('dontHaveAcc')}
+                  ?
+                  {' '}
+                </span>
                 <Link to={ROUTES.SIGN_UP}>{t('signUp')}</Link>
               </div>
             </div>

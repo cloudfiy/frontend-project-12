@@ -19,7 +19,9 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
 
-  if (result.error && result.error.status === 401) {
+  const isLoginRequest = args.url.includes('/login') || args.url.includes('/signup');
+
+  if (result.error && result.error.status === 401 && !isLoginRequest) {
     window.location.href = '/login';
     localStorage.removeItem(USER);
   }
