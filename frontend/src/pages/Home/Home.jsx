@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { Channels, Chat } from './components';
 import { useGetMessagesQuery } from '../../redux/services/messagesApi';
 import { useGetChannelsQuery } from '../../redux/services/channelsApi';
@@ -7,8 +9,12 @@ import getModal from '../../shared/components/Modals/index.js';
 
 import useSocket from './useSocket.js';
 import useModal from '../../shared/hooks/useModal.js';
+import useLogout from '../../shared/hooks/useLogout.js';
 
 const Home = () => {
+  const { t } = useTranslation();
+  const logout = useLogout();
+
   useSocket();
 
   const { isShow, modalType, modalProps } = useModal();
@@ -17,12 +23,23 @@ const Home = () => {
     data: channelsList = [],
     refetch: refetchChannels,
     isLoading: channelsLoading,
+    error: channelsError,
   } = useGetChannelsQuery();
   const {
     data: messages = [],
     refetch: refetchMessage,
     isLoading: messageLoading,
+    error: messagesError,
   } = useGetMessagesQuery();
+
+  useEffect(() => {
+    if (channelsError || messagesError) {
+      if (channelsError?.status === 401 || messagesError?.status === 401) {
+        logout();
+        window.location.reload();
+      }
+    }
+  }, [channelsError, messagesError, logout]);
 
   const renderModal = () => {
     if (!modalType) {
@@ -37,7 +54,10 @@ const Home = () => {
     return (
       <div className="h-100 col-12 d-flex align-items-center justify-content-center">
         <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
+          <span className="visually-hidden">
+            {t('loading')}
+            ...
+          </span>
         </Spinner>
       </div>
     );

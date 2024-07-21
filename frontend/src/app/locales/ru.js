@@ -29,6 +29,7 @@ export default {
     messageCount_few: '{{count}} сообщения',
     messageCount_many: '{{count}} сообщений',
     messageCount_other: '{{count}} сообщений',
+    channelsEdit: 'Управление каналом',
 
     validation: {
       required: 'Обязательное поле',

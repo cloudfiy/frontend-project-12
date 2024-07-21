@@ -16,20 +16,9 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-const baseQueryWithReauth = async (args, api, extraOptions) => {
-  const result = await baseQuery(args, api, extraOptions);
-
-  if (result.error && result.error.status === 401) {
-    window.location.href = '/login';
-    localStorage.removeItem(USER);
-  }
-
-  return result;
-};
-
 const $api = createApi({
   reducerPath: 'api',
-  baseQuery: baseQueryWithReauth,
+  baseQuery,
   endpoints: () => ({}),
 });
 

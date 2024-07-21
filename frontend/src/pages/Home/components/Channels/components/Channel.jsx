@@ -28,7 +28,7 @@ const Channel = ({ channel, activeChannelId, handleClickChannel }) => {
             id={`dropdown-split-${channel.id}`}
             className="flex-grow-0"
           >
-            <span className="visually-hidden">Управление каналом</span>
+            <span className="visually-hidden">{t('channelsEdit')}</span>
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item onClick={() => handleOpenModal('delete', { id: channel.id })}>

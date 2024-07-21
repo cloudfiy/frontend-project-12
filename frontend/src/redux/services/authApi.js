@@ -1,6 +1,6 @@
-import authApiInstance from '../noAuthApi';
+import $api from '../api';
 
-export const authApi = authApiInstance.injectEndpoints({
+export const authApi = $api.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials) => ({
