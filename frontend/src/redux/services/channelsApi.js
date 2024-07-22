@@ -4,6 +4,7 @@ export const channelsApi = $api.injectEndpoints({
   endpoints: (builder) => ({
     getChannels: builder.query({
       query: () => '/channels',
+      keepUnusedDataFor: 0,
     }),
     addChannel: builder.mutation({
       query: (channelName) => ({

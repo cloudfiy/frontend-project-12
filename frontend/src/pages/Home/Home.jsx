@@ -36,7 +36,6 @@ const Home = () => {
     if (channelsError || messagesError) {
       if (channelsError?.status === 401 || messagesError?.status === 401) {
         logout();
-        window.location.reload();
       }
     }
   }, [channelsError, messagesError, logout]);

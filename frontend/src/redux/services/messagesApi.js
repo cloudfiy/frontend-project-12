@@ -4,6 +4,7 @@ export const messagesApi = $api.injectEndpoints({
   endpoints: (builder) => ({
     getMessages: builder.query({
       query: () => '/messages',
+      keepUnusedDataFor: 0,
     }),
     addMessage: builder.mutation({
       query: (msg) => ({
