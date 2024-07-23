@@ -20,7 +20,7 @@ const Layout = () => {
         <div className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
           <div className="container">
             <Link to={ROUTES.HOME} className="navbar-brand">
-              Hexlet Chat
+              Your Chat
             </Link>
             {isAuth && (
               <button type="button" className="btn btn-primary ml-auto" onClick={handleLogout}>
